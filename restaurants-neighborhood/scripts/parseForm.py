@@ -20,6 +20,7 @@ print("Content-type: text/html")
 print()
 
 print("<html><body>")
+#inform the browser what page (or script) to call once the "submit" button is pressed
 print("<form action=\"/scripts/rFinder.py\">")
 for neighborhood in list_neighborhoods:
 	print("<input type=\"radio\" name=\"name\" value=\"{}\">{}<br>".format(neighborhood[0],neighborhood[0]))
