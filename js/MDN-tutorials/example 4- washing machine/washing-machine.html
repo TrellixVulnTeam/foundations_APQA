@@ -1,0 +1,34 @@
+</!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+
+<body>
+	<button>Start machine</button>
+	<p>The machine is stopped.</p>
+</body>
+<script type="text/javascript">
+
+	document.addEventListener("DOMContentLoaded",function(){
+		function updateBtn(){
+		if (btn.textContent === 'Start machine') {
+		    btn.textContent = 'Stop machine';
+		    txt.textContent = 'The machine has started!';
+		  } else {
+		    btn.textContent = 'Start machine';
+		    txt.textContent = 'The machine is stopped.';
+		  }};
+		  btn.addEventListener('click', updateBtn);
+		});
+	var btn = document.querySelector('button');
+	var txt = document.querySelector('p');
+
+	
+
+
+
+</script>
+</html>
+
+
