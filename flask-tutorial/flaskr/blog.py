@@ -1,5 +1,9 @@
+import sys
+
+#from flaskr.settings import username_export
+
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, url_for
+    Blueprint, flash, g, redirect, render_template, request, url_for, session
 )
 from werkzeug.exceptions import abort
 
@@ -9,18 +13,23 @@ from flaskr.db import get_db
 bp = Blueprint('blog', __name__)
 
 @bp.route('/')
+@login_required #added
 def index():
+    #print(username_export, file=sys.stderr)
     db = get_db()
     posts = db.execute(
         'SELECT p.id, title, body, created, author_id, username'
         ' FROM post p JOIN user u ON p.author_id = u.id'
-        ' ORDER BY created DESC'
+        ' WHERE username="{}"'
+        ' ORDER BY created DESC'.format(session['username']) 
+        #mistake by formatting, p.id confusion
     ).fetchall()
     return render_template('blog/index.html', posts=posts)
 
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
 def create():
+    print(session['username'], file=sys.stderr)
     if request.method == 'POST':
         title = request.form['title']
         body = request.form['body']
