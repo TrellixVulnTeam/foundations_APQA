@@ -2,8 +2,6 @@ import functools
 
 import sys
 
-#import flaskr.settings
-
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
@@ -12,12 +10,6 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from flaskr.db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
-#global username_export
-#username_export=''
-
-# @bp.route('/')
-# def hello():
-# 	return render_template()
 
 
 @bp.route('/register', methods=('GET', 'POST'))
@@ -25,8 +17,6 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        
-        #settings.username_export=username
         db = get_db()
         error = None
 
@@ -56,11 +46,7 @@ def register():
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
-        #global username_export
-        #username_export='' 
         username = request.form['username']
-        #username_export=username
-        #print(username_export, file=sys.stderr)
         password = request.form['password']
         db = get_db()
         error = None
