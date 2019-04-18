@@ -40,6 +40,7 @@ def delete_notes():
 	db.commit()
 	return redirect(url_for('index'))
 
+#doesn't work
 @bp.route('/delete_account', methods=['POST'])
 def delete_account():
 	db = get_db()
