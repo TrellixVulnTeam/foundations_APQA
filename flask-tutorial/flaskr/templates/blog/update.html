@@ -17,7 +17,9 @@
       <option value="3">Study</option>
       <option value="4">Other</option>
     </select>
+    <br>
     <input type="submit" value="Save">
+    <br>
   </form>
   <hr>
   <form action="{{ url_for('blog.delete', id=post['id']) }}" method="post">

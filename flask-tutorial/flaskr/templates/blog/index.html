@@ -13,7 +13,6 @@
       <header>
         <div>
           <h1>{{ post['p_title'] }}</h1>
-          <!--div class="about">by {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}</div-->
           <div class="about">{{ post['created'].strftime('%Y-%m-%d') }}</div>
         </div>
         {% if g.user['id'] == post['author_id'] %}
@@ -21,7 +20,9 @@
         {% endif %}
       </header>
       <p class="body">{{ post['body'] }}</p>
+      <br>
      <div class="category" style="background-color:{{post['color']}}"> {{ post['c_title'] }}</div>
+     <br>
     </article>
     {% if not loop.last %}
       <hr>
