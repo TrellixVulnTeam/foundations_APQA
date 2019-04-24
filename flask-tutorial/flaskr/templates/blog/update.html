@@ -11,6 +11,12 @@
       value="{{ request.form['title'] or post['title'] }}" required>
     <label for="body">Body</label>
     <textarea name="body" id="body">{{ request.form['body'] or post['body'] }}</textarea>
+    <select name="category">
+      <option value="1">Business</option>
+      <option value="2">Travel</option>
+      <option value="3">Study</option>
+      <option value="4">Other</option>
+    </select>
     <input type="submit" value="Save">
   </form>
   <hr>
