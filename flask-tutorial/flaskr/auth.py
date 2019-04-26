@@ -19,7 +19,6 @@ def register():
         password = request.form['password']
         db = get_db()
         error = None
-
         if not username:
             error = 'Username is required.'
         elif not password:
@@ -38,7 +37,6 @@ def register():
             return redirect(url_for('auth.login'))
 
         flash(error)
-        #makes it possible to create a message in one view and render it in a view function called next
 
     return render_template('auth/register.html')
 

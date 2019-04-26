@@ -1,5 +1,3 @@
-import sys
-
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, url_for, session
 )
@@ -11,7 +9,7 @@ from flaskr.db import get_db
 bp = Blueprint('blog', __name__)
 
 @bp.route('/')
-@login_required #added
+@login_required
 def index():
     db = get_db()
     posts = db.execute(
@@ -20,9 +18,8 @@ def index():
         ' JOIN user u ON p.author_id = u.id'
         ' JOIN category c ON p.category_id = c.id'
         ' WHERE username="{}"'
-        ' ORDER BY created DESC'.format(session['username']) 
+        ' ORDER BY p.created DESC'.format(session['username']) 
     ).fetchall()
-    print(posts, file=sys.stdout)
     return render_template('blog/index.html', posts=posts)
 
 @bp.route('/create', methods=('GET', 'POST'))

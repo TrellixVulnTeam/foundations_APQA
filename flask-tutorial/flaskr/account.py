@@ -21,9 +21,7 @@ def change_username():
 	db.execute('UPDATE user SET username="{}" WHERE id="{}"'.format(new_username, session['user_id']))
 	db.commit()
 	session['username']=new_username
-	return redirect(url_for('account.account_overview'))
-
-
+	return redirect(url_for('index'))
 
 @bp.route('/change_password', methods=['POST'])
 def change_password():
@@ -31,7 +29,7 @@ def change_password():
 	db = get_db()
 	db.execute('UPDATE user SET password="{}" WHERE id="{}"'.format(generate_password_hash(new_password), session['user_id']))
 	db.commit()
-	return redirect(url_for('account.account_overview'))
+	return redirect(url_for('index'))
 
 @bp.route('/delete_notes', methods=['POST'])
 def delete_notes():
@@ -40,7 +38,6 @@ def delete_notes():
 	db.commit()
 	return redirect(url_for('index'))
 
-#doesn't work
 @bp.route('/delete_account', methods=['POST'])
 def delete_account():
 	db = get_db()
